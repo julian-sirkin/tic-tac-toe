@@ -12,6 +12,40 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <div class="login-container">
+        <form action="" id="login-form">
+          <input type="text" name="email" placeholder="email">
+          <input type="password" name="password" placeholder="password">
+          <button type="submit">login</button>
+        </form>
+      </div>
+    <div class="board-container">
+      <table id="game-board">
+        <tr id="row-top" class="row">
+          <td id="0" class="space"></td>
+          <td id="1" class="space"></td>
+          <td id="2" class="space"></td>
+        </tr>
+        <tr id="row-middle" class="row">
+          <td id="3" class="space"></td>
+          <td id="4" class="space"></td>
+          <td id="5" class="space"></td>
+        </tr>
+        <tr id="row-bottom" class="row">
+          <td id="6" class="space"></td>
+          <td id="7" class="space"></td>
+          <td id="8" class="space"></td>
+        </tr>
+      </table>
+      <div id="Information">
+        <h4>Current Player</h4>
+        <button id="new-game">New Game</button>
+      </div>
+    </div>
+    <div id="winner">
+      <h1 id="winning-player">
+      </h1>
+    </div>
+
     </body>
 </html>
