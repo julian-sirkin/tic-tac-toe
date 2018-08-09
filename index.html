@@ -24,11 +24,13 @@
             <input type="password" placeholder="password confirmation" name="credentials[password_confirmation]">
             <button type="submit">Create New Account</button>
         </form>
-        <form name="change-password" id="change-password">
-          <input type="password" name="passwords[old]" placeholder="Old password">
-          <input type="password" name="passwords[new]" placeholder="Newer Password">
-          <button type="submit",>Change Password</button>
-        </form>
+        <form id="change-password">
+          <fieldset>
+            <input type="password" name="passwords[old]" placeholder="Old password">
+            <input type="password" name="passwords[new]" placeholder="Newer Password">
+            <button type="submit">Submit!</button>
+          </fieldset>
+      </form>
       </div>
     <div class="board-container">
       <table id="game-board">

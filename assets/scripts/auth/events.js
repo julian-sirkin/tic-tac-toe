@@ -34,7 +34,6 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFail)
 }
-
 const handlerController = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
