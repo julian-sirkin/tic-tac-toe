@@ -5,8 +5,8 @@ alert('A great success')
 const signUpFail = function () {
 alert('failed miserably')
 }
-const logInSuccess = function () {
-store.user = response.user
+const logInSuccess = function (data) {
+store.user = data.user
 }
 const logInFail = function () {
   alert('shame, shame, shame, shame')

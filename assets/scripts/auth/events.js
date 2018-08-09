@@ -14,15 +14,21 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  const data = getFormFields(event)
+  const data = getFormFields(event.target)
   api.logIn(data)
     .then(ui.logInSuccess)
     .catch(ui.logInFail)
+}
+const onLogOut = function (event) {
+  event.preventDefauly()
+
 }
 
 const handlerController = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
+  $('#logout').on(submit, onLogOut)
+  gameLogic.selectSpace()
 }
 
 module.exports = {

@@ -18,6 +18,7 @@ const winningSpaces = [
 
 // Marks board with X or O and marks the javascript
 // Game board with X or O at same index
+
 const selectSpace = function () {
   $('#game-board td').click(function() {
   if (gameBoard[this.id] == '') {
@@ -29,6 +30,7 @@ const selectSpace = function () {
     }
   })
 }
+
 
 // Switch Player
 const changePlayer = function () {
