@@ -14,7 +14,7 @@
     <body>
       <div class="login-container">
         <form id="login-form">
-            <input type="text" name="credentials[email]" placeholder="emails">
+            <input type="text" name="credentials[email]" placeholder="email">
             <input type="password" name="credentials[password]" placeholder="password">
             <button type="submit">login</button>
         </form>
@@ -23,6 +23,11 @@
             <input type="password" placeholder="password" name="credentials[password]">
             <input type="password" placeholder="password confirmation" name="credentials[password_confirmation]">
             <button type="submit">Create New Account</button>
+        </form>
+        <form name="change-password" id="change-password">
+          <input type="password" name="passwords[old]" placeholder="Old password">
+          <input type="password" name="passwords[new]" placeholder="Newer Password">
+          <button type="submit",>Change Password</button>
         </form>
       </div>
     <div class="board-container">
@@ -46,7 +51,13 @@
       <div id="Information">
         <h4>Current Player</h4>
         <button id="new-game">New Game</button>
-        <button type="submit" id="logout"></button>
+        <form id="log-out" name="log-out">
+          <fieldset>
+            <button type="submit">Run away</button>
+          </fieldset>
+
+        </form>
+
       </div>
     </div>
     <div id="winner">
