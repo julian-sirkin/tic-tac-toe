@@ -27,8 +27,8 @@ const makeMove = function (space) {
   } else {
     alert('Pick another space')
   }
-  console.log(gameBoard)
-  console.log('is game over?', over)
+  updateApi()
+  console.log(store.game)
 }
 // Check for winner, check for tie
 const gameOver = function () {
@@ -75,6 +75,12 @@ const changePlayer = function () {
     activePlayer = playerOne
   }
 }
+//Update object to send to api
+const updateApi = function () {
+  store.game.cells = gameBoard
+  store.game.over = over
+}
+
 module.exports = {
   makeMove
 }
