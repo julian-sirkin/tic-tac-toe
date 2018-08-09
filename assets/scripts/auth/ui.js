@@ -1,4 +1,5 @@
 const store = require('../store.js')
+
 const signUpSuccess = function () {
 alert('A great success')
 }
@@ -7,7 +8,7 @@ alert('failed miserably')
 }
 const logInSuccess = function (data) {
   store.user = data.user
-console.log(store.user)
+console.log('user info is', store.user)
 }
 const logInFail = function () {
   alert('shame, shame, shame, shame')
