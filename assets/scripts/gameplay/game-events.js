@@ -9,14 +9,18 @@ const onNewGame = function (event) {
     .then(ui.newGameSuccess)
     .catch(ui.newGame)
 }
-const onClickSpace = function (event) {
+const onMakeMove = function (event) {
   const space = event.currentTarget.id
-gameLogic.makeMove(space)
+  gameLogic.makeMove(space)
+  const data = store.gameUpdate
+  api.makeMove(data)
+    .then(ui.makeMoveSuccess)
+    .catch(ui.makeMoveFail)
 }
 
 const gameEventHandler = function () {
   $('#new-game').on('submit', onNewGame)
-  $('#game-board td').on('click', onClickSpace)
+  $('#game-board td').on('click', onMakeMove)
 }
 
 module.exports = {

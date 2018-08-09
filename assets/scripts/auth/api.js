@@ -9,6 +9,7 @@ const signUp = function (data) {
   })
 }
 const logIn = function (data) {
+  console.log('login info paassed in', data)
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',

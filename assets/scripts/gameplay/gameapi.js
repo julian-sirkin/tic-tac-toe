@@ -10,7 +10,19 @@ const newGame = function () {
     }
   })
 }
-
+// APi call after making a move
+const makeMove = function (data) {
+console.log('meow', data)
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 module.exports = {
-  newGame
+  newGame,
+  makeMove
 }

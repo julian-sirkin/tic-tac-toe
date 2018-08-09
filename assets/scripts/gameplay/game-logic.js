@@ -4,6 +4,7 @@ let gameBoard = ['', '', '', '', '', '', '', '', '']
 const playerOne = 'X'
 const playerTwo = 'O'
 let over = false
+let movePlayed = ''
 let activePlayer = playerOne
 const winningSpaces = [
   [0, 1, 2],
@@ -19,6 +20,7 @@ const winningSpaces = [
 checks for tie, changes player, updates if the game
 is over */
 const makeMove = function (space) {
+  movePlayed = space
   if (gameBoard[space] === '') {
     gameBoard[space] = activePlayer
     // checkForWin() ? alert('Winner Winner Chicken Dinner') : changePlayer()
@@ -28,7 +30,6 @@ const makeMove = function (space) {
     alert('Pick another space')
   }
   updateApi()
-  console.log(store.game)
 }
 // Check for winner, check for tie
 const gameOver = function () {
@@ -51,8 +52,9 @@ const gameTied = function (gameBoard) {
 }
 // Check for win.....
 const checkForWin = function () {
-for (let i = 0; i < winningSpaces.length; i++) {
+  for (let i = 0; i < winningSpaces.length; i++) {
     if (checkPlayer(winningSpaces[i])) {
+      over = true
       return true
     }
   }
@@ -75,10 +77,11 @@ const changePlayer = function () {
     activePlayer = playerOne
   }
 }
-//Update object to send to api
+// Update object to send to api
 const updateApi = function () {
-  store.game.cells = gameBoard
-  store.game.over = over
+  store.gameUpdate.cell = gameBoard
+  store.gameUpdate.cell.index = movePlayed
+  store.gameUpdate.over = over
 }
 
 module.exports = {
