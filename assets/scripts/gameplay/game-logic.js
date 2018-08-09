@@ -3,6 +3,7 @@
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 const playerOne = 'X'
 const playerTwo = 'O'
+
 let activePlayer = playerOne
 const winningSpaces = [
   [0, 1, 2],
@@ -19,17 +20,16 @@ const winningSpaces = [
 // Marks board with X or O and marks the javascript
 // Game board with X or O at same index
 
-const selectSpace = function () {
-  $('#game-board td').click(function() {
-  if (gameBoard[this.id] == '') {
-    $(this).text(activePlayer)
-    gameBoard[this.id] = activePlayer
+const makeMove = function (space) {
+  if (gameBoard[space] === '') {
+    gameBoard[space] = activePlayer
     checkForWin() ? alert('Winner Winner Chicken Dinner') : changePlayer()
   } else {
   alert('Pick another space')
     }
-  })
-}
+    console.log(gameBoard)
+  }
+
 
 
 // Switch Player
@@ -61,5 +61,5 @@ const checkPlayer = (combo) => {
 }
 
 module.exports = {
-selectSpace
+makeMove
 }

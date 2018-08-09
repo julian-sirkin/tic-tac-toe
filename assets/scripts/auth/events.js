@@ -39,7 +39,6 @@ const handlerController = function () {
   $('#login-form').on('submit', onSignIn)
   $('#log-out').on('submit', onLogOut)
   $('#change-password').on('submit', onChangePassword)
-  gameLogic.selectSpace()
 }
 
 module.exports = {
