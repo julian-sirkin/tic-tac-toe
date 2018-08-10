@@ -21,14 +21,10 @@ checks for tie, changes player, updates if the game
 is over */
 const makeMove = function (space) {
   movePlayed = space
-  if (gameBoard[space] === '') {
-    gameBoard[space] = activePlayer
-    // checkForWin() ? alert('Winner Winner Chicken Dinner') : changePlayer()
-    gameOver()
-    changePlayer()
-  } else {
-    alert('Pick another space')
-  }
+  gameBoard[space] = activePlayer
+  // checkForWin() ? alert('Winner Winner Chicken Dinner') : changePlayer()
+  gameOver()
+  changePlayer()
   updateApi()
 }
 // Check for winner, check for tie
@@ -77,6 +73,14 @@ const changePlayer = function () {
     activePlayer = playerOne
   }
 }
+// Reset when New game is started
+const newGame = function () {
+  gameBoard = ['', '', '', '', '', '', '', '', '']
+  over = false
+  movePlayed = ''
+  activePlayer = playerOne
+}
+
 // Update object to send to api
 const updateApi = function () {
   store.gameUpdate.cell = gameBoard
@@ -85,5 +89,9 @@ const updateApi = function () {
 }
 
 module.exports = {
-  makeMove
+  makeMove,
+  movePlayed,
+  activePlayer,
+  newGame,
+  gameBoard
 }

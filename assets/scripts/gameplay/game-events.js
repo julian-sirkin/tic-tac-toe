@@ -11,11 +11,16 @@ const onNewGame = function (event) {
 }
 const onMakeMove = function (event) {
   const space = event.currentTarget.id
-  gameLogic.makeMove(space)
-  const data = store.gameUpdate
-  api.makeMove(data)
-    .then(ui.makeMoveSuccess)
-    .catch(ui.makeMoveFail)
+  console.log(store.game.cells + 'GameBoard')
+  if (store.game.cells[space] === '') {
+    gameLogic.makeMove(space)
+    const data = store.gameUpdate
+    api.makeMove(data)
+      .then(ui.makeMoveSuccess)
+      .catch(ui.makeMoveFail)
+  } else {
+    alert('pick another square')
+  }
 }
 
 const gameEventHandler = function () {
