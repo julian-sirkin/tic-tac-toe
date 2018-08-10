@@ -13,7 +13,6 @@ const newGameFail = function () {
 }
 const makeMoveSuccess = function (data) {
 store.game = data.game
-console.log('the new game is here', store.game)
 }
 
 const makeMoveFail = function () {
