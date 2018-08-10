@@ -5,7 +5,7 @@ const store = {
 let gameUpdate = {
   game: {
     cell: {
-      index: 0,
+      index: NaN,
       value: 'x'
     },
     over: false

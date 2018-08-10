@@ -11,7 +11,6 @@ const onNewGame = function (event) {
 }
 const onMakeMove = function (event) {
   const space = event.currentTarget.id
-  console.log(store.game.cells + 'GameBoard')
   if (store.game.cells[space] === '') {
     gameLogic.makeMove(space)
     const data = store.gameUpdate
