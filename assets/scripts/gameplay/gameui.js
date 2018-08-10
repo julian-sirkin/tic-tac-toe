@@ -5,8 +5,10 @@ const gameInfo = require('./game-logic.js')
 
 const newGameSuccess = function (data) {
   gameInfo.newGame()
+    for (var i = 0; i < 8; i++) {
+      $(`#${i}`).empty()
+    }
   store.game = data.game
-  // Add function to clear display
 }
 const newGameFail = function () {
   alert('No new game created')

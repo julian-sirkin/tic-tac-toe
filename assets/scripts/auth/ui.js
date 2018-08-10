@@ -1,26 +1,31 @@
 const store = require('../store.js')
+const gameApi = require('../gameplay/gameapi.js')
+const gameUi = require('../gameplay/gameui.js')
 
 const signUpSuccess = function () {
-alert('A great success')
+  alert('A great success')
 }
 const signUpFail = function () {
-alert('failed miserably')
+  alert('failed miserably')
 }
 const logInSuccess = function (data) {
   store.user = data.user
-console.log('user info is', store.user)
+  $('#login-container, #information').toggleClass('hidden')
+  gameApi.newGame()
+    .then(gameUi.newGameSuccess)
+    .catch(gameUi.newGameFail)
 }
 const logInFail = function () {
-  alert('shame, shame, shame, shame')
+  alert('Failed login')
 }
 const logOutSuccess = function (data) {
-  alert('you are logged out now')
+  $('#login-container, #information').toggleClass('hidden')
 }
 const logOutFail = function () {
   console.log('You are trapped here forever!')
 }
 const changePasswordSuccess = function () {
-  alert('You have changed your password')
+  $('#login-container, #information').toggleClass('hidden')
 }
 const changePasswordFail = function () {
   alert('BOOOO, BOOOOO, BOOOOO, Boooo princess buttercup')

@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <div class="login-container">
+      <div id="login-container">
         <form id="login-form">
             <input type="text" name="credentials[email]" placeholder="email">
             <input type="password" name="credentials[password]" placeholder="password">
@@ -24,13 +24,25 @@
             <input type="password" placeholder="password confirmation" name="credentials[password_confirmation]">
             <button type="submit">Create New Account</button>
         </form>
-        <form id="change-password">
+      </div>
+      <div id="information" class="hidden">
+        <form id="log-out" name="log-out">
           <fieldset>
-            <input type="password" name="passwords[old]" placeholder="Old password">
-            <input type="password" name="passwords[new]" placeholder="Newer Password">
-            <button type="submit">Submit!</button>
+            <button type="submit">Run away</button>
           </fieldset>
+        </form>
+      <form id="new-game" name="new-game">
+        <fieldset>
+          <button type="submit">New Game</button>
+        </fieldset>
       </form>
+      <form id="change-password">
+        <fieldset>
+          <input type="password" name="passwords[old]" placeholder="Old password">
+          <input type="password" name="passwords[new]" placeholder="Newer Password">
+          <button type="submit">Submit!</button>
+        </fieldset>
+    </form>
       </div>
     <div class="board-container">
       <table id="game-board">
@@ -50,19 +62,7 @@
           <td id="8" class="space"></td>
         </tr>
       </table>
-      <div id="Information">
-        <h4>Current Player</h4>
-        <form id="log-out" name="log-out">
-          <fieldset>
-            <button type="submit">Run away</button>
-          </fieldset>
-        </form>
-      <form id="new-game" name="new-game">
-        <fieldset>
-          <button type="submit">New Game</button>
-        </fieldset>
-      </form>
-      </div>
+
     </div>
     <div id="winner">
       <h1 id="winning-player">

@@ -12,7 +12,6 @@ const newGame = function () {
 }
 // APi call after making a move
 const makeMove = function (data) {
-console.log('object passing sending to api', data)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
