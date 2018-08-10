@@ -24,7 +24,6 @@ const makeMove = function (space) {
   gameBoard[space] = activePlayer
   // checkForWin() ? alert('Winner Winner Chicken Dinner') : changePlayer()
   gameOver()
-  changePlayer()
   updateApi()
 }
 // Check for winner, check for tie
@@ -86,6 +85,7 @@ const updateApi = function () {
   store.gameUpdate.cell = gameBoard
   store.gameUpdate.cell.index = movePlayed
   store.gameUpdate.over = over
+  store.game.cells[movePlayed] = activePlayer
 }
 
 module.exports = {
@@ -93,5 +93,6 @@ module.exports = {
   movePlayed,
   activePlayer,
   newGame,
-  gameBoard
+  gameBoard,
+  changePlayer
 }
