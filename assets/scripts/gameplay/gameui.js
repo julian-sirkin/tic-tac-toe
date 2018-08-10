@@ -21,12 +21,15 @@ const makeMoveSuccess = function (data) {
   gameInfo.changePlayer(placeToken)
   store.game = data.game
 }
-
 const makeMoveFail = function () {
   alert('Complete failure')
 }
-
-
+const oldGamesSuccess = function (data) {
+  console.log(data.games.length)
+}
+const oldGamesFail = function () {
+  alert('did not get old games')
+}
 
 
 
@@ -34,5 +37,7 @@ module.exports = {
   newGameSuccess,
   newGameFail,
   makeMoveSuccess,
-  makeMoveFail
+  makeMoveFail,
+  oldGamesSuccess,
+  oldGamesFail
 }

@@ -21,7 +21,17 @@ const makeMove = function (data) {
     data
   })
 }
+const oldGames = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
 module.exports = {
   newGame,
-  makeMove
+  makeMove,
+  oldGames
 }

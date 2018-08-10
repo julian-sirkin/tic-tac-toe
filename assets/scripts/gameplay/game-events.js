@@ -21,10 +21,17 @@ const onMakeMove = function (event) {
     alert('pick another square')
   }
 }
+const onOldGames = function (event) {
+  event.preventDefault()
+  api.oldGames()
+    .then(ui.oldGamesSuccess)
+    .catch(ui.oldGamesFail)
+}
 
 const gameEventHandler = function () {
   $('#new-game').on('submit', onNewGame)
   $('#game-board td').on('click', onMakeMove)
+  $('#old-games').on('click', onOldGames)
 }
 
 module.exports = {
