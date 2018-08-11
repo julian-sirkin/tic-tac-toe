@@ -27,6 +27,7 @@ const logOut = function () {
   })
 }
 const changePassword = function (data) {
+  console.log('the info getting passed is data', data)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',

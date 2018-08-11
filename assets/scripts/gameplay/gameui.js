@@ -5,7 +5,7 @@ const gameInfo = require('./game-logic.js')
 
 const newGameSuccess = function (data) {
   gameInfo.newGame()
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 9; i++) {
       $(`#${i}`).empty()
     }
   store.game = data.game

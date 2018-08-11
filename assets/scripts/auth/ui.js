@@ -3,14 +3,17 @@ const gameApi = require('../gameplay/gameapi.js')
 const gameUi = require('../gameplay/gameui.js')
 
 const signUpSuccess = function () {
-  alert('A great success')
+  alert('succeeded greatly! ')
+  $('#sign-up input').val('')
 }
 const signUpFail = function () {
+  $('#sign-up input').val('')
   alert('failed miserably')
 }
 const logInSuccess = function (data) {
   store.user = data.user
   $('#login-container, #information').toggleClass('hidden')
+  $('#login-form input').val('')
   gameApi.newGame()
     .then(gameUi.newGameSuccess)
     .catch(gameUi.newGameFail)
@@ -25,6 +28,7 @@ const logOutFail = function () {
   console.log('You are trapped here forever!')
 }
 const changePasswordSuccess = function () {
+  $('#change-password input').val('')
   $('#login-container, #information').toggleClass('hidden')
 }
 const changePasswordFail = function () {

@@ -30,20 +30,22 @@
           <fieldset>
             <button type="submit">Run away</button>
           </fieldset>
-        </form>
-      <form id="new-game" name="new-game">
-        <fieldset>
+        <fieldset id="new-game">
           <button type="submit">New Game</button>
         </fieldset>
-        <fieldset id="change-password">
+      </form>
+      <form id="change-password" name="change-password">
+        <fieldset>
           <input type="password" name="passwords[old]" placeholder="Old password">
           <input type="password" name="passwords[new]" placeholder="Newer Password">
           <button type="submit">Submit!</button>
         </fieldset>
-        <fieldset id="old-games">
+      </form>
+      <form id="old-games" >
+        <fieldset>
           <button type="submit" name="old-games">Old Game Count</button>
         </fieldset>
-    </form>
+      </form>
       </div>
     <div class="board-container">
       <table id="game-board">
