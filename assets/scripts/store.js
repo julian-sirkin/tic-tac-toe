@@ -1,5 +1,5 @@
 'use strict'
-
+let tiedGame = false
 const store = {
 }
 let gameUpdate = {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,43 +12,24 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <div id="login-container">
-        <form id="login-form">
-            <input type="text" name="credentials[email]" placeholder="email">
-            <input type="password" name="credentials[password]" placeholder="password">
-            <button type="submit">login</button>
-        </form>
-        <form name="sign-up" id="sign-up">
-            <input type="email" placeholder="email" name="credentials[email]">
-            <input type="password" placeholder="password" name="credentials[password]">
-            <input type="password" placeholder="password confirmation" name="credentials[password_confirmation]">
-            <button type="submit">Create New Account</button>
-        </form>
-      </div>
-      <div id="information" class="hidden">
-        <form id="log-out" name="log-out">
-          <fieldset>
-            <button type="submit">Run away</button>
-          </fieldset>
-        <fieldset id="new-game">
-          <button type="submit">New Game</button>
-        </fieldset>
+    <div id="display" class="text-center">
+      <h1>Tic Tac Toe</h1>
+    </div>
+    <div id="login-container">
+      <form id="login-form" class="col-md-2">
+          <input type="text" name="credentials[email]" placeholder="email">
+          <input type="password" name="credentials[password]" placeholder="password">
+          <button type="submit">login</button>
       </form>
-      <form id="change-password" name="change-password">
-        <fieldset>
-          <input type="password" name="passwords[old]" placeholder="Old password">
-          <input type="password" name="passwords[new]" placeholder="Newer Password">
-          <button type="submit">Submit!</button>
-        </fieldset>
+      <form name="sign-up" id="sign-up" class="col-md-2">
+          <input type="email" placeholder="email" name="credentials[email]">
+          <input type="password" placeholder="password" name="credentials[password]">
+          <input type="password" placeholder="password confirmation" name="credentials[password_confirmation]">
+          <button type="submit">Create New Account</button>
       </form>
-      <form id="old-games" >
-        <fieldset>
-          <button type="submit" name="old-games">Old Game Count</button>
-        </fieldset>
-      </form>
-      </div>
+    </div>
     <div class="board-container">
-      <table id="game-board">
+      <table id="game-board" class="hidden">
         <tr id="row-top" class="row">
           <td id="0" class="space"></td>
           <td id="1" class="space"></td>
@@ -65,12 +46,30 @@
           <td id="8" class="space"></td>
         </tr>
       </table>
-
     </div>
-    <div id="winner">
-      <h1 id="winning-player">
-      </h1>
+    <div id="information" class="hidden text-center">
+      <form id="log-out" name="log-out">
+        <fieldset>
+          <button type="submit">Run away</button>
+        </fieldset>
+      </form>
+      <form id="new-game">
+      <fieldset>
+        <button type="submit">New Game</button>
+      </fieldset>
+      </form id="change-password" name="change-password">
+      <form>
+        <fieldset>
+          <input type="password" name="passwords[old]" placeholder="Old password">
+          <input type="password" name="passwords[new]" placeholder="Newer Password">
+          <button type="submit">Submit!</button>
+        </fieldset>
+      </form>
+      <form id="old-games" >
+        <fieldset>
+          <button type="submit" name="old-games">Old Game Count</button>
+        </fieldset>
+      </form>
     </div>
-
     </body>
 </html>

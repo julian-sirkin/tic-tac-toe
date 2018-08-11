@@ -12,7 +12,7 @@ const signUpFail = function () {
 }
 const logInSuccess = function (data) {
   store.user = data.user
-  $('#login-container, #information').toggleClass('hidden')
+  $('#login-container, #information, #game-board').toggleClass('hidden')
   $('#login-form input').val('')
   gameApi.newGame()
     .then(gameUi.newGameSuccess)
@@ -22,7 +22,8 @@ const logInFail = function () {
   alert('Failed login')
 }
 const logOutSuccess = function (data) {
-  $('#login-container, #information').toggleClass('hidden')
+  $('#login-container, #information, #game-board').toggleClass('hidden')
+  $('#display').html(`<h1>Tic Tac Toe</h1>`)
 }
 const logOutFail = function () {
   console.log('You are trapped here forever!')

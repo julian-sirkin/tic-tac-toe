@@ -3,6 +3,7 @@ const store = require('../store.js')
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 const playerOne = 'X'
 const playerTwo = 'O'
+let tiedGame = false
 let over = false
 let activePlayer = playerOne
 const winningSpaces = [
@@ -40,6 +41,7 @@ const gameTied = function (gameBoard) {
       return false
     }
   }
+  store.tiedGame = true
   over = true
   return true
 }
@@ -89,5 +91,6 @@ module.exports = {
   activePlayer,
   newGame,
   gameBoard,
-  changePlayer
+  changePlayer,
+  tiedGame
 }
