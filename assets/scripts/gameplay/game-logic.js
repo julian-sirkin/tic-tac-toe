@@ -3,7 +3,6 @@ const store = require('../store.js')
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 const playerOne = 'X'
 const playerTwo = 'O'
-let tiedGame = false
 let over = false
 let activePlayer = playerOne
 const winningSpaces = [
@@ -22,17 +21,12 @@ is over */
 const makeMove = function (space) {
   gameBoard[space] = activePlayer
   // checkForWin() ? alert('Winner Winner Chicken Dinner') : changePlayer()
-  gameOver()
+  checkForWin()
+  gameTied()
   updateApi(space)
 }
 // Check for winner, check for tie
-const gameOver = function () {
-  if (checkForWin()) {
-    return alert('winner winner chicken dinner')
-  } else if (gameTied(gameBoard)) {
-    return alert('the game has been tied')
-  }
-}
+
 // Tied Game
 const gameTied = function (gameBoard) {
   for (let i = 0; i < gameBoard.length; i++) {
@@ -91,6 +85,5 @@ module.exports = {
   activePlayer,
   newGame,
   gameBoard,
-  changePlayer,
-  tiedGame
+  changePlayer
 }
