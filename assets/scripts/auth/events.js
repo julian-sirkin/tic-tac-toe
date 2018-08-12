@@ -8,6 +8,7 @@ const ui = require('./ui.js')
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  data.password === data.password_confirmation ? store.passwordMatch : store.passwordMatch = false
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFail)
@@ -16,7 +17,6 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   api.logIn(data)
     .then(ui.logInSuccess)
     .catch(ui.logInFail)

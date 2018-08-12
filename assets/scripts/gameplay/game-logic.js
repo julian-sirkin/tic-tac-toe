@@ -28,7 +28,7 @@ const makeMove = function (space) {
 // Check for winner, check for tie
 
 // Tied Game
-const gameTied = function (gameBoard) {
+const gameTied = function () {
   for (let i = 0; i < gameBoard.length; i++) {
     if (gameBoard[i] === '') {
       over = false
@@ -85,5 +85,7 @@ module.exports = {
   activePlayer,
   newGame,
   gameBoard,
-  changePlayer
+  changePlayer,
+  checkForWin,
+  gameTied
 }
