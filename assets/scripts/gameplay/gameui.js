@@ -38,11 +38,10 @@ const makeMoveSuccess = function (data) {
   }
 }
 const makeMoveFail = function () {
-  alert('Complete failure')
+  $('#display').html('<h1>Please try to move again </h1>')
 }
 const oldGamesSuccess = function (data) {
   $('#old-games-info').html(`<h4>You have played ${data.games.length} games</h4>`)
-  console.log(data.games.length)
 }
 const oldGamesFail = function () {
   $('#old-games-info').html('<h4>Unable to get old games, try again!')

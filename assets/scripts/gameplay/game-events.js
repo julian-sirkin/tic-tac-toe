@@ -10,15 +10,17 @@ const onNewGame = function (event) {
     .catch(ui.newGame)
 }
 const onMakeMove = function (event) {
-  const space = event.currentTarget.id
-  if (store.game.cells[space] === '') {
-    gameLogic.makeMove(space)
-    const data = store.gameUpdate
-    api.makeMove(data)
-      .then(ui.makeMoveSuccess)
-      .catch(ui.makeMoveFail)
-  } else {
-    alert('pick another square')
+  if (gameLogic.checkForWin() === false && gameLogic.gameTied() === false) {
+    const space = event.currentTarget.id
+    if (store.game.cells[space] === '') {
+      gameLogic.makeMove(space)
+      const data = store.gameUpdate
+      api.makeMove(data)
+        .then(ui.makeMoveSuccess)
+        .catch(ui.makeMoveFail)
+    } else {
+      $('#display').html('<h1> Please pick another square')
+    }
   }
 }
 const onOldGames = function (event) {
