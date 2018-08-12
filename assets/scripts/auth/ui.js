@@ -37,7 +37,7 @@ const logOutFail = function () {
 }
 const changePasswordSuccess = function () {
   $('#change-password input, old-games-info').val('')
-  $('#login-container, #information').toggleClass('hidden')
+  $('#login-container, #information, #game-board').toggleClass('hidden')
 }
 const changePasswordFail = function () {
   $('display').html('<h1> Try to change your password again </h1>')
