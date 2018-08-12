@@ -13,7 +13,7 @@ const newGameSuccess = function (data) {
   store.game = data.game
 }
 const newGameFail = function () {
-  alert('No new game created')
+  $('#display').html(`<h2>Unable to start a new Game, try again</h2>`)
 }
 const makeMoveSuccess = function (data) {
   // Store info for using in this function
