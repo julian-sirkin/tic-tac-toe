@@ -4,6 +4,11 @@ const playerOne = 'X'
 const playerTwo = 'O'
 let over = false
 let activePlayer = playerOne
+let computerPlayer = {
+  playing: false,
+  compPiece: 'X',
+  otherPiece: 'O'
+}
 const winningSpaces = [
   [0, 1, 2],
   [3, 4, 5],
@@ -214,7 +219,7 @@ const spaceDouble = (player, testBoard, opponent) => {
 const doubleWin = (player, testBoard, winArray, opponent) => {
   let counter = 0
   //console.log('This is the test Board', testBoard)
-//console.log('Player', player)
+// console.log('Player', player)
   //console.log('Opponent', opponent)
   for (let i = 0; i < winArray.length; i++) {
     if (testBoard[winArray[i]] === opponent) {
