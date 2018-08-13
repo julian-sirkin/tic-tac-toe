@@ -24,7 +24,8 @@ const makeMove = function (space) {
   checkForWin()
   gameTied()
   updateApi(space)
-  console.log('the best move is', computer())
+  console.log('the best move for O is', computer('O', 'X'))
+  console.log('The best for X is', computer('X', 'O'))
 }
 // Check for winner, check for tie
 
@@ -82,17 +83,19 @@ const updateApi = function (space) {
 }
 
 // Computer opponent
-const computer = function () {
-if (winOnNextMove('O', winningSpaces) !== false) {
-  return winOnNextMove('O', winningSpaces)
-} else if (winOnNextMove('X', winningSpaces) !== false) {
-  return winOnNextMove('X', winningSpaces)
+const computer = function (player, opponent) {
+  console.log('O can win?', winOnNextMove('O', 'X', winningSpaces))
+  console.log('X can win?', winOnNextMove('X', 'O', winningSpaces))
+if (winOnNextMove(player, opponent, winningSpaces) !== false) {
+  return winOnNextMove(player, opponent, winningSpaces)
+} else if (winOnNextMove(opponent, player, winningSpaces) !== false) {
+  return winOnNextMove(opponent, player, winningSpaces)
 } else {
-return bestSpotForWin()
+return bestSpotForWin(player, opponent)
   }
 }
 // Calculate spot with most possible wins
-const bestSpotForWin = function () {
+const bestSpotForWin = function (player, opponent) {
 let bestMove = 0
   let moveCount = []
   /* Turns moveCount into an array with a length of 9, the index of
@@ -100,60 +103,70 @@ let bestMove = 0
   in the index is the number of possible winninc combinations it can still
   be used in */
   for (var i = 0; i < winningSpaces.length; i++) {
-    if (potentialWinningCobo(winningSpaces[i], gameBoard)) {
-      bestSpot(winningSpaces[i], moveCount)
+    if (potentialWinningCobo(winningSpaces[i], gameBoard, opponent)) {
+      bestSpot(winningSpaces[i], moveCount, player)
     }
   }
+  console.log('Number of possible wins', moveCount)
+  // Selects largest space from array created in for loop above
 for (let i = 0; i < moveCount.length; i++) {
     if (moveCount[i] > bestMove) {
       bestMove = moveCount[i]
     }
   }
-return moveCount.indexOf(bestMove)
-}
-// Checks to see what winning combos are still possible
-const potentialWinningCobo = (winningCombo, gameBoard) => {
-  for (let i = 0; i < winningCombo.length; i++) {
-    if (gameBoard[winningCombo[i]] === 'X') {
-      return false
-    } else {
-      return true
+  if (moveCount.indexOf(bestMove) !== -1) {
+    return moveCount.indexOf(bestMove)
+  } else {
+    // If no more winning moves are available, pick a random space
+    for (let i = 0; i < gameBoard.length; i++) {
+      if (gameBoard[i] === '') {
+        return gameBoard.indexOf[gameBoard[i]]
+      }
     }
   }
 }
+// Checks to see what winning combos are still possible
+const potentialWinningCobo = (winningCombo, gameBoard, opponent) => {
+  for (let i = 0; i < winningCombo.length; i++) {
+    if (gameBoard[winningCombo[i]] === opponent) {
+      return false
+    }
+  }
+  return true
+}
 // Adds one in index of move for each possible winning combo it is in
-const bestSpot = (combo, spaceCount) => {
+const bestSpot = (combo, spaceCount, player) => {
   for (let i = 0; i < combo.length; i++) {
-    if (spaceCount[combo[i]] === undefined && gameBoard[combo[i]] !== 'O') {
+    if (spaceCount[combo[i]] === undefined && gameBoard[combo[i]] !== player) {
       spaceCount[combo[i]] = 1
-    } else if (gameBoard[combo[i]] !== 'O') {
+    } else if (gameBoard[combo[i]] !== player) {
       spaceCount[combo[i]]++
     }
   }
 }
 // Calculate if win on next move
-const winOnNextMove = function (player, winningCombo) {
+const winOnNextMove = function (player, opponent, winningCombo) {
 for (let i = 0; i < winningCombo.length; i++) {
-  if (checkSpaceForWin(player, winningCombo[i]) !== false) {
-    return checkSpaceForWin(player, winningCombo[i])
+  if (checkSpaceForWin(player, opponent, winningCombo[i]) !== false) {
+    return checkSpaceForWin(player, opponent, winningCombo[i])
     }
   }
   return false
 }
-const checkSpaceForWin = (player, combo) => {
+const checkSpaceForWin = (player, opponent, combo) => {
 // Fill array with
 const possibleWinArr = []
 let winningSpace = NaN
-for (var i = 0; i < combo.length; i++) {
-  console.log('Check GameBoard', gameBoard[combo[i]])
-if (gameBoard[combo[i]] !== player && gameBoard[combo[i]] !== '') {
+for (let i = 0; i < combo.length; i++) {
+if (gameBoard[combo[i]] === opponent) {
       return false
     } else if (gameBoard[combo[i]] === player) {
       possibleWinArr.push(combo[i])
+    } else {
+      winningSpace = combo[i]
     }
-    winningSpace = combo[i]
   }
-if (possibleWinArr.length === 2) {
+if (possibleWinArr.length === 2 && gameBoard[winningSpace] !== opponent) {
     return winningSpace
   } else {
     return false
@@ -168,6 +181,5 @@ module.exports = {
   gameBoard,
   changePlayer,
   checkForWin,
-  gameTied,
-  computer
+  gameTied
 }
