@@ -23,8 +23,7 @@ const makeMove = function (space) {
   checkForWin()
   gameTied()
   updateApi(space)
-  console.log('the best move for O is', computer('O', 'X'))
-  console.log('The best for X is', computer('X', 'O'))
+  checkDoubleWin('X', 'O')
 }
 // Check for winner, check for tie
 
@@ -83,8 +82,7 @@ const updateApi = function (space) {
 
 // Computer opponent
 const computer = function (player, opponent) {
-  console.log('O can win?', winOnNextMove('O', 'X', winningSpaces))
-  console.log('X can win?', winOnNextMove('X', 'O', winningSpaces))
+  console.log('Double win move on', checkDoubleWin('X'))
 if (winOnNextMove(player, opponent, winningSpaces) !== false) {
     return winOnNextMove(player, opponent, winningSpaces)
 } else if (winOnNextMove(opponent, player, winningSpaces) !== false) {
@@ -106,7 +104,6 @@ let bestMove = 0
       bestSpot(winningSpaces[i], moveCount, player)
     }
   }
-  console.log('Number of possible wins', moveCount)
   // Selects largest space from array created in for loop above
 for (let i = 0; i < moveCount.length; i++) {
     if (moveCount[i] > bestMove) {
@@ -169,6 +166,57 @@ if (possibleWinArr.length === 2 && gameBoard[winningSpace] !== opponent) {
     return winningSpace
   } else {
     return false
+  }
+}
+// Check for move with that gives multiple possibilities of a win
+
+  let futureBoard = []
+  let simulWin = []
+
+
+const checkDoubleWin = function (player, opponent) {
+  simulWin = []
+  for (let i = 0; i < gameBoard.length; i++) {
+    futureBoard.push(gameBoard[i])
+  }
+  for (let i = 0; i < futureBoard.length; i++) {
+    console.log(futureBoard, 'futureBoard')
+    console.log(futureBoard[i], 'value of futureBoard at', i)
+    if (futureBoard[i] === '') {
+      futureBoard[i] = player
+      console.log(spaceDouble(player, futureBoard), 'spaceDouble back')
+      if (spaceDouble(player, futureBoard) !== false) {
+      return spaceDouble(player, futureBoard)
+        }
+      }
+      futureBoard[i] = ''
+      simulWin = []
+    }
+    return false
+  }
+
+
+const spaceDouble = (player, testBoard) => {
+  for (let i = 0; i < winningSpaces.length; i++) {
+  doubleWin(player, testBoard, winningSpaces[i])
+  if (simulWin.length > 1) {
+    return futureBoard.indexOf(futureBoard[i])
+  } else { return false
+    }
+  }
+}
+const doubleWin = (player, testBoard, winArray, opponent) => {
+  let pieces = []
+  for (let i = 0; i < winArray.length; i++) {
+    if (winArray[i] === opponent) {
+      return false
+    } else if (testBoard[winArray[i]] === player) {
+      pieces.push(winArray[i])
+    }
+    // Might have to add check for opponent
+    if (pieces.length === 2) {
+      simulWin.push(true)
+    }
   }
 }
 
