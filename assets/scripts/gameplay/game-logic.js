@@ -23,10 +23,7 @@ const makeMove = function (space) {
   checkForWin()
   gameTied()
   updateApi(space)
-  console.log('The best move for x is', computer('X', 'O'))
-  console.log('the best move for O is', computer('O', 'X'))
-  console.log('X play double Jeapordy', checkDoubleWin('X', 'O'))
-  console.log('O play double Jeapordy', checkDoubleWin('O', 'X'))
+  console.log('The best moveis', computer('X', 'O'))
 }
 // Check for winner, check for tie
 
@@ -178,9 +175,6 @@ if (possibleWinArr.length === 2 && gameBoard[winningSpace] !== opponent) {
 }
 // Check for move with that gives multiple possibilities of a win
 
-
-
-
 const checkDoubleWin = function (player, opponent) {
   let futureBoard = []
   const setFutureBoard = function () {
@@ -211,7 +205,7 @@ const spaceDouble = (player, testBoard, opponent) => {
       tracker += 1
     }
   }
-  if (tracker > 1) {
+  if (tracker === 2) {
     return true
   }
   return false
