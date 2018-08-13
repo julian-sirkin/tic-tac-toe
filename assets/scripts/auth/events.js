@@ -8,7 +8,6 @@ const ui = require('./ui.js')
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  data.password === data.password_confirmation ? store.passwordMatch : store.passwordMatch = false
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFail)
@@ -36,11 +35,18 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFail)
 }
+const onShowLogin = function (event) {
+  event.preventDefault()
+  ui.showLogin()
+}
+
 const handlerController = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
   $('#log-out').on('submit', onLogOut)
   $('#change-password').on('submit', onChangePassword)
+  $('$showLogin').on('submit', onShowLogin)
+  $('$showSignUp').on('click', ui.showSignUp())
 }
 
 module.exports = {

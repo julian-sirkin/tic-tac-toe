@@ -181,5 +181,6 @@ module.exports = {
   gameBoard,
   changePlayer,
   checkForWin,
-  gameTied
+  gameTied,
+  computer
 }
