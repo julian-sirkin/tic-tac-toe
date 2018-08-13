@@ -26,6 +26,7 @@ const makeMove = function (space) {
   console.log('The best move for x is', computer('X', 'O'))
   console.log('the best move for O is', computer('O', 'X'))
   console.log('X play double Jeapordy', checkDoubleWin('X', 'O'))
+  console.log('O play double Jeapordy', checkDoubleWin('O', 'X'))
 }
 // Check for winner, check for tie
 
@@ -88,6 +89,10 @@ const computer = function (player, opponent) {
     return winOnNextMove(player, opponent, winningSpaces)
   } else if (winOnNextMove(opponent, player, winningSpaces) !== false) {
     return winOnNextMove(opponent, player, winningSpaces)
+  } else if (checkDoubleWin(player, opponent) !== false) {
+    return checkDoubleWin(player, opponent)
+  } else if (checkDoubleWin(opponent, player) !== false) {
+    checkDoubleWin(opponent, player)
   } else if (bestSpotForWin(player, opponent) >= bestSpotForWin(opponent, player)) {
     return bestSpotForWin(player, opponent)
   } else {
@@ -173,12 +178,11 @@ if (possibleWinArr.length === 2 && gameBoard[winningSpace] !== opponent) {
 }
 // Check for move with that gives multiple possibilities of a win
 
-  let futureBoard = []
-  let simulWin = []
+
 
 
 const checkDoubleWin = function (player, opponent) {
-  simulWin = []
+  let futureBoard = []
   const setFutureBoard = function () {
     futureBoard = []
     for (let i = 0; i < gameBoard.length; i++) {
@@ -191,7 +195,7 @@ const checkDoubleWin = function (player, opponent) {
       futureBoard[i] = player
       if (spaceDouble(player, futureBoard, opponent) !== false) {
         futureBoard[i] = ''
-        simulWin = []
+        return i
       }
     }
   }
@@ -200,15 +204,14 @@ const checkDoubleWin = function (player, opponent) {
 
 
 const spaceDouble = (player, testBoard, opponent) => {
- simulWin = []
+ let tracker = 0
 
   for (let i = 0; i < winningSpaces.length; i++) {
     if (doubleWin(player, testBoard, winningSpaces[i], opponent)) {
-      simulWin.push(true)
+      tracker += 1
     }
   }
-
-  if (simulWin.length > 1) {
+  if (tracker > 1) {
     return true
   }
   return false
@@ -216,21 +219,21 @@ const spaceDouble = (player, testBoard, opponent) => {
 
 const doubleWin = (player, testBoard, winArray, opponent) => {
   let counter = 0
-  console.log('This is the test Board', testBoard)
-  console.log('Player', player)
-  console.log('Opponent', opponent)
+  //console.log('This is the test Board', testBoard)
+//console.log('Player', player)
+  //console.log('Opponent', opponent)
   for (let i = 0; i < winArray.length; i++) {
     if (testBoard[winArray[i]] === opponent) {
       return false
     }
   }
-  console.log('win array length', winArray.length)
+  //console.log('win array length', winArray.length)
   for (let j = 0; j < winArray.length; j++) {
-    console.log('Inside the for loop')
   if (testBoard[winArray[j]] === player) {
       counter += 1
     }
-    console.log('Pieces that match are', counter, 'array being tested', winArray)
+  }
+    //console.log('Pieces that match are', counter, 'array being tested', winArray)
     // Might have to add check for opponent
     if (counter === 2) {
       return true
@@ -238,7 +241,7 @@ const doubleWin = (player, testBoard, winArray, opponent) => {
       return false
     }
   }
-}
+
 
 
 module.exports = {
