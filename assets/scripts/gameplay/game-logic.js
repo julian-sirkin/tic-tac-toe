@@ -1,4 +1,3 @@
-// Global variables for game logic
 const store = require('../store.js')
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 const playerOne = 'X'
@@ -87,9 +86,9 @@ const computer = function (player, opponent) {
   console.log('O can win?', winOnNextMove('O', 'X', winningSpaces))
   console.log('X can win?', winOnNextMove('X', 'O', winningSpaces))
 if (winOnNextMove(player, opponent, winningSpaces) !== false) {
-  return winOnNextMove(player, opponent, winningSpaces)
+    return winOnNextMove(player, opponent, winningSpaces)
 } else if (winOnNextMove(opponent, player, winningSpaces) !== false) {
-  return winOnNextMove(opponent, player, winningSpaces)
+    return winOnNextMove(opponent, player, winningSpaces)
 } else {
 return bestSpotForWin(player, opponent)
   }
