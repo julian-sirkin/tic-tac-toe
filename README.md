@@ -41,3 +41,6 @@ My Ui sucks and needs to be addressed. The computer took me longer than I though
 and ran out of time. I also need to focus on the new game for when you play the computer.
 It works the first game, but then after that it is weird, and the computer won't engage
 at the right time for the first move or two.
+
+Wireframe:
+https://git.generalassemb.ly/juliansirkin/game-project-scope-study/tree/response
