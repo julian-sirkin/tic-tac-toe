@@ -4,11 +4,8 @@ const playerOne = 'X'
 const playerTwo = 'O'
 let over = false
 let activePlayer = playerOne
-let computerPlayer = {
-  playing: true,
-  compPiece: 'X',
-  otherPiece: 'O'
-}
+
+
 const winningSpaces = [
   [0, 1, 2],
   [3, 4, 5],
@@ -96,7 +93,7 @@ const computer = function (player, opponent) {
 
 const randomMove = function() {
   for (var i = 0; i < gameBoard.length; i++) {
-    if (gameBoaard[i] === '') {
+    if (gameBoard[i] === '') {
       return i
     }
   }
@@ -247,16 +244,14 @@ const doubleWin = (player, testBoard, winArray, opponent) => {
       counter += 1
     }
   }
-    //console.log('Pieces that match are', counter, 'array being tested', winArray)
-    // Might have to add check for opponent
-    if (counter === 2) {
-      return true
-    } else {
-      return false
-    }
+  // console.log('Pieces that match are', counter, 'array being tested', winArray)
+  // Might have to add check for opponent
+  if (counter === 2) {
+    return true
+  } else {
+    return false
   }
-
-
+}
 
 module.exports = {
   makeMove,
@@ -266,6 +261,5 @@ module.exports = {
   changePlayer,
   checkForWin,
   gameTied,
-  computerPlayer,
   computer
 }
