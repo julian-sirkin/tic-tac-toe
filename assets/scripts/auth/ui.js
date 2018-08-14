@@ -3,7 +3,7 @@ const gameApi = require('../gameplay/gameapi.js')
 const gameUi = require('../gameplay/gameui.js')
 
 const signUpSuccess = function () {
-  alert('succeeded greatly! ')
+  $('#login-message').html('<h4>You have created a new Account</h4>')
   $('#sign-up input').val('')
 }
 const signUpFail = function () {
