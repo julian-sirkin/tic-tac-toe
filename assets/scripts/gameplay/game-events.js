@@ -29,6 +29,7 @@ const onMakeMove = function (event) {
 }
 const onComputerMove = function () {
   console.log('the current player the computer sees', store.currentPlayer())
+  console.log(gameLogic.gameBoard, 'current gameboard')
   if (gameLogic.checkForWin() === false && gameLogic.gameTied() === false &&
       computerPlayer.playing === true &&
       computerPlayer.compPiece === store.currentPlayer()) {
@@ -56,6 +57,7 @@ const onNewGameComputerFirst = function (event) {
     compPiece: 'X',
     otherPiece: 'O'
   }
+  gameLogic.activePlayer = gameLogic.playerOne
   onNewGame()
 }
 const onNewGameComputerSecond = function (event) {
@@ -66,11 +68,9 @@ const onNewGameComputerSecond = function (event) {
   compPiece: 'O',
   otherPiece: 'X'
 }
-console.log('Computer goes Second')
   onNewGame()
 }
 const onNewGameHuman = function (event) {
-  console.log('playing human')
   event.preventDefault()
   computerPlayer = {}
   computerPlayer = {

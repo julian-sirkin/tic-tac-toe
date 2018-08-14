@@ -261,5 +261,6 @@ module.exports = {
   changePlayer,
   checkForWin,
   gameTied,
-  computer
+  computer,
+  playerOne
 }
