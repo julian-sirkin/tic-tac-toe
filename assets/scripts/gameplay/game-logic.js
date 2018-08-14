@@ -87,6 +87,21 @@ const updateApi = function (space) {
 
 // Computer opponent
 const computer = function (player, opponent) {
+  if (pickMove !== undefined) {
+    return pickMove(player, opponent)
+  }
+  return randMove()
+}
+
+
+const randomMove = function() {
+  for (var i = 0; i < gameBoard.length; i++) {
+    if (gameBoaard[i] === '') {
+      return i
+    }
+  }
+}
+const pickMove = function (player, opponent) {
   if (winOnNextMove(player, opponent, winningSpaces) !== false) {
     return winOnNextMove(player, opponent, winningSpaces)
   } else if (winOnNextMove(opponent, player, winningSpaces) !== false) {
