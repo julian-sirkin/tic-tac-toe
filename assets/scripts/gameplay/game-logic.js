@@ -92,7 +92,7 @@ const computer = function (player, opponent) {
 
 
 const randomMove = function() {
-  for (var i = 0; i < gameBoard.length; i++) {
+  for (let i = 0; i < gameBoard.length; i++) {
     if (gameBoard[i] === '') {
       return i
     }
@@ -200,7 +200,7 @@ const checkDoubleWin = function (player, opponent) {
   futureBoard.push(gameBoard[i])
     }
   }
-  for (let i = 0; i < gameBoard.length; i++) {
+      for (let i = 0; i < gameBoard.length; i++) {
     setFutureBoard()
     if (futureBoard[i] === '') {
       futureBoard[i] = player

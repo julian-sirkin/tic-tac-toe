@@ -50,35 +50,37 @@
       </table>
     </div>
     <div id="information" class="hidden text-center">
-      <form id="log-out" name="log-out">
-        <fieldset>
-          <button type="submit">Run away</button>
-        </fieldset>
-      </form>
       <form id="new-game-human">
         <fieldset>
           <button type="submit">play human</button>
         </fieldset>
       </form>
-      <form id="new-game-computerO">
-      <fieldset>
-        <button type="submit">Play Computer you go first</button>
-      </fieldset>
-      <form id="new-game-computerX">
-      <fieldset>
-        <button type="submit">Play Computer You go second</button>
-      </fieldset>
-      </form>
-      <form id="change-password" name="change-password">
-        <fieldset>
-          <input type="password" name="passwords[old]" placeholder="Old password">
-          <input type="password" name="passwords[new]" placeholder="Newer Password">
-          <button type="submit">Submit!</button>
-        </fieldset>
-      </form>
+        <form id="new-game-computer-second">
+          <fieldset>
+            <button type="submit">Play first against computer</button>
+          </fieldset>
+        </form>
+        <form id="newgamecomputerfirst">
+          <fieldset>
+            <button type="submit">Play second against computer</button>
+          </fieldset>
+        </form>
+
+        <form id="change-password" name="change-password">
+            <fieldset>
+              <input type="password" name="passwords[old]" placeholder="Old password">
+              <input type="password" name="passwords[new]" placeholder="Newer Password">
+              <button type="submit">Submit!</button>
+            </fieldset>
+          </form>
       <form id="old-games" >
         <fieldset>
           <button type="submit" name="old-games">Old Game Count</button>
+        </fieldset>
+      </form>
+      <form id="log-out" name="log-out">
+        <fieldset>
+          <button type="submit">Run away</button>
         </fieldset>
       </form>
       <div id="old-games-info">

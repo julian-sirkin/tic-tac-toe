@@ -22,7 +22,6 @@ const onSignIn = function (event) {
 }
 const onLogOut = function (event) {
   event.preventDefault()
-  console.log('Literally anything')
   api.logOut()
     .then(ui.logOutSuccess)
     .catch(ui.logOutFail)
