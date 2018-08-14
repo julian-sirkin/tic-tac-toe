@@ -5,9 +5,9 @@ const playerTwo = 'O'
 let over = false
 let activePlayer = playerOne
 let computerPlayer = {
-  playing: false,
-  compPiece: 'X',
-  otherPiece: 'O'
+  playing: true,
+  compPiece: 'O',
+  otherPiece: 'X'
 }
 const winningSpaces = [
   [0, 1, 2],
@@ -90,7 +90,7 @@ const computer = function (player, opponent) {
   if (pickMove !== undefined) {
     return pickMove(player, opponent)
   }
-  return randMove()
+  return randomMove()
 }
 
 
@@ -265,5 +265,7 @@ module.exports = {
   gameBoard,
   changePlayer,
   checkForWin,
-  gameTied
+  gameTied,
+  computerPlayer,
+  computer
 }

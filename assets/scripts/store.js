@@ -12,8 +12,15 @@ let gameUpdate = {
     over: false
   }
 }
-
+let currentPlayer = function () {
+  if (gameUpdate.game.cell.value === 'X') {
+    return 'O'
+  } else {
+    return 'X'
+  }
+}
 module.exports = {
   store,
-  gameUpdate
+  gameUpdate,
+  currentPlayer
 }
