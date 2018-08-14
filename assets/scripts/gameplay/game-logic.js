@@ -5,7 +5,7 @@ const playerTwo = 'O'
 let over = false
 let activePlayer = playerOne
 let computerPlayer = {
-  playing: false,
+  playing: true,
   compPiece: 'X',
   otherPiece: 'O'
 }
