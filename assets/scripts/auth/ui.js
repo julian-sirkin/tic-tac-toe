@@ -20,9 +20,9 @@ const logInSuccess = function (data) {
   $('#login-container, #information, #game-board').toggleClass('hidden')
   $('#login-form input').val('')
   $('#login-message').html('')
-  gameApi.newGame()
+  /*gameApi.newGame()
     .then(gameUi.newGameSuccess)
-    .catch(gameUi.newGameFail)
+    .catch(gameUi.newGameFail)*/
 }
 const logInFail = function () {
   $('#login-message').html('<h4> Please try again </h4>')

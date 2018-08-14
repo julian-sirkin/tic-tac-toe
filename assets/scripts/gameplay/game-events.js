@@ -9,6 +9,7 @@ const onNewGame = function (event) {
   event.preventDefault()
   api.newGame()
     .then(ui.newGameSuccess)
+    .then(onComputerMove)
     .catch(ui.newGame)
 }
 const onMakeMove = function (event) {

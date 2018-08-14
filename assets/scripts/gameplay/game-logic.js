@@ -5,9 +5,9 @@ const playerTwo = 'O'
 let over = false
 let activePlayer = playerOne
 let computerPlayer = {
-  playing: true,
-  compPiece: 'O',
-  otherPiece: 'X'
+  playing: false,
+  compPiece: 'X',
+  otherPiece: 'O'
 }
 const winningSpaces = [
   [0, 1, 2],
