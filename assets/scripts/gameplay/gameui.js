@@ -9,11 +9,13 @@ const clearGameBoard = function () {
 }
 // Starting a new game
 const newGameSuccess = function (data) {
+  console.log('I did not refresh')
   // Clears info about old games, or failed change of password
   $('#old-games-info').html('')
   // Sets the internal javascript for a new game
   gameInfo.newGame()
   // clears any remaining pieces leftover from an old game from UI
+  // Puts player one up top on board
   clearGameBoard()
   // Stores response from API
   store.game = data.game

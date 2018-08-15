@@ -25,21 +25,21 @@ const logInFail = function () {
   $('#login-form input').val('')
 }
 const logOutSuccess = function (data) {
+  gameUi.clearGameBoard()
   $('#old-games-info, #display').html('')
   $('#login-container, #information, #game-board').toggleClass('hidden')
   $('#display').html('<h1>Tic Tac Toe</h1>')
-  gameUi.clearGameBoard()
 }
 const logOutFail = function () {
   $('display').html('<h1> Try to log out again </h1>')
 }
 const changePasswordSuccess = function () {
+  gameUi.clearGameBoard()
   $('#change-password input').val('')
   $('#old-games-info').html('')
   $('$display').empty()
   $('#login-container, #information, #game-board').toggleClass('hidden')
   $('#display').html(`<h1>Tic Tac Toe</h1>`)
-  gameUi.clearGameBoard()
 }
 const changePasswordFail = function () {
   $('#change-password input').val('')

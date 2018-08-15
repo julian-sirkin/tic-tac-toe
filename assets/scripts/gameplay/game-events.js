@@ -6,7 +6,7 @@ const store = require('../store.js')
 
 
 const onNewGame = function (event) {
-  event.preventDefault
+  event.preventDefault()
   api.newGame()
     .then(ui.newGameSuccess)
     // .then(onComputerMove)
