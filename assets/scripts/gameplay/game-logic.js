@@ -29,7 +29,7 @@ const makeMove = function (space) {
 }
 // Check for winner, check for tie
 
-// Tied Game
+// Check for Tied Game by seeing if there are any free spaces on the Board
 const gameTied = function () {
   for (let i = 0; i < gameBoard.length; i++) {
     if (gameBoard[i] === '') {
@@ -41,7 +41,11 @@ const gameTied = function () {
   over = true
   return true
 }
-// Check for win.....
+/*Check for the win, by looping through all winning combinations
+Then use a callback to see if that specific combination is occupied
+By the same piece. If any given array of 3 winning squares does not come
+back as true, then it will move to the next set of 3 squares until it has tested
+all possible arrays */
 const checkForWin = function () {
   for (let i = 0; i < winningSpaces.length; i++) {
     if (checkPlayer(winningSpaces[i])) {
@@ -98,6 +102,13 @@ const randomMove = function() {
     }
   }
 }
+/* Controller of all the small functions for the computer
+Currently checks to see if there is a winning move for itself, then the opponent
+then checks to see if there are any moves to play that will allow there to be 2
+moves that win on the following move, then checks the same for the opponent
+Finally checks the board to see how many possible winning combinations can be made
+with each square, it compares that to the same information from the opponent, and
+takes whichever one has a higher rating. */
 const pickMove = function (player, opponent) {
   if (winOnNextMove(player, opponent, winningSpaces) !== false) {
     return winOnNextMove(player, opponent, winningSpaces)
@@ -162,7 +173,10 @@ const bestSpot = (combo, spaceCount, player) => {
     }
   }
 }
-// Calculate if win on next move
+/*Calculate if win on next move Loop through all winning combinations, in a callback
+check to see if two spaces within the winning combination are occupied by the same player
+If either an opponent pieces is in that combination, or two spaces are not occupied
+It comes back as false */
 const winOnNextMove = function (player, opponent, winningCombo) {
 for (let i = 0; i < winningCombo.length; i++) {
   if (checkSpaceForWin(player, opponent, winningCombo[i]) !== false) {
@@ -171,6 +185,8 @@ for (let i = 0; i < winningCombo.length; i++) {
   }
   return false
 }
+// Callback to winOnNextMove Only returns true if two spaces are occupied
+// by the player
 const checkSpaceForWin = (player, opponent, combo) => {
 // Fill array with
 const possibleWinArr = []
@@ -190,20 +206,29 @@ if (possibleWinArr.length === 2 && gameBoard[winningSpace] !== opponent) {
     return false
   }
 }
-// Check for move with that gives multiple possibilities of a win
 
+/* Check for move with that gives multiple possibilities of a win. Creates
+a copy of the current gameboard, as to not meess with the callback. Then Loops
+Through the copy of the gameboard, adding one piece to each square, then uses
+a callback nested within a callback to test if there are multiple ways to win
+on the next turn with the piece on the board. If The callbacks come back negative
+then the loop continues, until every move on the board is tested */
 const checkDoubleWin = function (player, opponent) {
+  // Create test Board
   let futureBoard = []
+  // Function to reset the test board to the actual gameboard
   const setFutureBoard = function () {
     futureBoard = []
     for (let i = 0; i < gameBoard.length; i++) {
   futureBoard.push(gameBoard[i])
     }
   }
+  // Loop through and add a piece to an empty square then run callback
       for (let i = 0; i < gameBoard.length; i++) {
     setFutureBoard()
     if (futureBoard[i] === '') {
       futureBoard[i] = player
+      // Callback to test the new board for potential winning combination
       if (spaceDouble(player, futureBoard, opponent) !== false) {
         futureBoard[i] = ''
         return i
@@ -213,10 +238,10 @@ const checkDoubleWin = function (player, opponent) {
   return false
 }
 
-
+/* With new board loops through possible winning combination like above,
+ubut only returns true only if the callback returns as true two times */
 const spaceDouble = (player, testBoard, opponent) => {
  let tracker = 0
-
   for (let i = 0; i < winningSpaces.length; i++) {
     if (doubleWin(player, testBoard, winningSpaces[i], opponent)) {
       tracker += 1
@@ -227,25 +252,21 @@ const spaceDouble = (player, testBoard, opponent) => {
   }
   return false
 }
-
+/* Callback to the spaceDouble Loops through pieces to see if opponent has
+a piece in the winning combination. If yes, then returns false. Otherwise, it Loops
+through again, and returns true if two pieces are occupied by the player  */
 const doubleWin = (player, testBoard, winArray, opponent) => {
   let counter = 0
-  //console.log('This is the test Board', testBoard)
-// console.log('Player', player)
-  //console.log('Opponent', opponent)
   for (let i = 0; i < winArray.length; i++) {
     if (testBoard[winArray[i]] === opponent) {
       return false
     }
   }
-  //console.log('win array length', winArray.length)
   for (let j = 0; j < winArray.length; j++) {
   if (testBoard[winArray[j]] === player) {
       counter += 1
     }
   }
-  // console.log('Pieces that match are', counter, 'array being tested', winArray)
-  // Might have to add check for opponent
   if (counter === 2) {
     return true
   } else {

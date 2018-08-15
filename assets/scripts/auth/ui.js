@@ -16,7 +16,7 @@ const signUpFail = function () {
 }
 const logInSuccess = function (data) {
   store.user = data.user
-  $('#login-container, #information, #game-board').toggleClass('hidden')
+  $('#login-container, #information').toggleClass('hidden')
   $('#login-form input').val('')
   $('#login-message').html('')
 }
@@ -25,9 +25,9 @@ const logInFail = function () {
   $('#login-form input').val('')
 }
 const logOutSuccess = function (data) {
-  $('#old-games-info').html('')
+  $('#old-games-info, #display').html('')
   $('#login-container, #information, #game-board').toggleClass('hidden')
-  $('#display').html(`<h1>Tic Tac Toe</h1>`)
+  $('#display').html('<h1>Tic Tac Toe</h1>')
   gameUi.clearGameBoard()
 }
 const logOutFail = function () {
@@ -36,7 +36,9 @@ const logOutFail = function () {
 const changePasswordSuccess = function () {
   $('#change-password input').val('')
   $('#old-games-info').html('')
+  $('$display').empty()
   $('#login-container, #information, #game-board').toggleClass('hidden')
+  $('#display').html(`<h1>Tic Tac Toe</h1>`)
   gameUi.clearGameBoard()
 }
 const changePasswordFail = function () {

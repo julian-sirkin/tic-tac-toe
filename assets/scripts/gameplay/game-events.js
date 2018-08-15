@@ -6,15 +6,17 @@ const store = require('../store.js')
 
 
 const onNewGame = function (event) {
-  event.preventDefault()
+  event.preventDefault
   api.newGame()
     .then(ui.newGameSuccess)
     // .then(onComputerMove)
     .catch(ui.newGame)
 }
 const onMakeMove = function (event) {
+  // Prevents move if game is won or tied
   if (gameLogic.checkForWin() === false && gameLogic.gameTied() === false) {
     const space = event.currentTarget.id
+      // Only continues if space is not occupied by piece
     if (store.game.cells[space] === '') {
       gameLogic.makeMove(space)
       const data = store.gameUpdate
@@ -39,7 +41,7 @@ const onComputerMove = function () {
     gameLogic.makeMove(compMove)
     const data = store.gameUpdate
     api.makeMove(data)
-      .then(ui.makeMoveSuccess)
+       .then(ui.makeMoveSuccess)
       .catch(ui.makeMoveFail)
   }
 }*/
