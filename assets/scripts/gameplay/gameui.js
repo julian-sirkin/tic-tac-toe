@@ -1,15 +1,17 @@
 const store = require('../store.js')
 const gameInfo = require('./game-logic.js')
 const clearOldGames = $('#old-games-info').html('')
-
-
-const newGameSuccess = function (data) {
-  $('#old-games-info').html('')
-  gameInfo.newGame()
+const clearGameBoard = function () {
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).empty()
     $('#display').html(`<h2>Current Player: 1 </h2>`)
   }
+}
+
+const newGameSuccess = function (data) {
+  $('#old-games-info').html('')
+  gameInfo.newGame()
+  clearGameBoard()
   store.game = data.game
 }
 const newGameFail = function () {
@@ -47,8 +49,6 @@ const oldGamesFail = function () {
   $('#old-games-info').html('<h4>Unable to get old games, try again!')
 }
 
-
-
 module.exports = {
   newGameSuccess,
   newGameFail,
@@ -56,5 +56,6 @@ module.exports = {
   makeMoveFail,
   oldGamesSuccess,
   oldGamesFail,
-  clearOldGames
+  clearOldGames,
+  clearGameBoard
 }

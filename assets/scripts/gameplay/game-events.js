@@ -2,14 +2,14 @@ const gameLogic = require('./game-logic.js')
 const api = require('./gameapi.js')
 const ui = require('./gameui.js')
 const store = require('../store.js')
-let computerPlayer = {}
+// let computerPlayer = {}
 
 
-
-const onNewGame = function () {
+const onNewGame = function (event) {
+  event.preventDefault()
   api.newGame()
     .then(ui.newGameSuccess)
-    .then(onComputerMove)
+    // .then(onComputerMove)
     .catch(ui.newGame)
 }
 const onMakeMove = function (event) {
@@ -20,13 +20,13 @@ const onMakeMove = function (event) {
       const data = store.gameUpdate
       api.makeMove(data)
         .then(ui.makeMoveSuccess)
-        .then(onComputerMove)
         .catch(ui.makeMoveFail)
     } else {
       $('#display').html('<h1> Please pick another square')
     }
   }
 }
+ /*
 const onComputerMove = function () {
   console.log('the current player the computer sees', store.currentPlayer())
   console.log(gameLogic.gameBoard, 'current gameboard')
@@ -42,13 +42,14 @@ const onComputerMove = function () {
       .then(ui.makeMoveSuccess)
       .catch(ui.makeMoveFail)
   }
-}
+}*/
 const onOldGames = function (event) {
   event.preventDefault()
   api.oldGames()
     .then(ui.oldGamesSuccess)
     .catch(ui.oldGamesFail)
 }
+/*
 const onNewGameComputerFirst = function (event) {
   event.preventDefault()
   computerPlayer = {}
@@ -80,16 +81,16 @@ const onNewGameHuman = function (event) {
 }
   onNewGame()
 }
-
+*/
 const gameEventHandler = function () {
-  $('#new-game-human').on('click', onNewGameHuman)
+  $('#new-game-human').on('click', onNewGame)
   $('#game-board td').on('click', onMakeMove)
   $('#old-games').on('click', onOldGames)
-  $('#new-game-computer-second').on('submit', onNewGameComputerSecond)
-  $('#newgamecomputerfirst').on('submit', onNewGameComputerFirst)
+  // $('#new-game-computer-second').on('submit', onNewGameComputerSecond)
+  // $('#newgamecomputerfirst').on('submit', onNewGameComputerFirst)
 }
 
 module.exports = {
-  gameEventHandler,
-  onComputerMove
+  gameEventHandler
+  // onComputerMove
 }
