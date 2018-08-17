@@ -9,7 +9,6 @@ const clearGameBoard = function () {
 }
 // Starting a new game
 const newGameSuccess = function (data) {
-  console.log('I did not refresh')
   // Clears info about old games, or failed change of password
   $('#old-games-info').html('')
   // Sets the internal javascript for a new game

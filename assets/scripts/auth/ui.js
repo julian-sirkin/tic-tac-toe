@@ -27,19 +27,22 @@ const logInFail = function () {
 const logOutSuccess = function (data) {
   gameUi.clearGameBoard()
   $('#old-games-info, #display').html('')
-  $('#login-container, #information, #game-board').toggleClass('hidden')
+  $('#login-container, #information').toggleClass('hidden')
+  $('#game-board').addClass('hidden')
   $('#display').html('<h1>Tic Tac Toe</h1>')
 }
 const logOutFail = function () {
   $('display').html('<h1> Try to log out again </h1>')
 }
 const changePasswordSuccess = function () {
-  gameUi.clearGameBoard()
+  // gameUi.clearGameBoard()
   $('#change-password input').val('')
-  $('#old-games-info').html('')
-  $('$display').empty()
-  $('#login-container, #information, #game-board').toggleClass('hidden')
-  $('#display').html(`<h1>Tic Tac Toe</h1>`)
+  //$('#old-games-info').html('')
+  //$('$display').empty()
+  /*$('#login-container, #information').toggleClass('hidden')
+  $('#game-board').addClass('hidden')
+  $('#display').html(`<h1>Tic Tac Toe</h1>`)*/
+  $('#old-games-info').html('<h1>You have succesfully changed Your password</h1>')
 }
 const changePasswordFail = function () {
   $('#change-password input').val('')

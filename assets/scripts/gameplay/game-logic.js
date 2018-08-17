@@ -25,7 +25,6 @@ const makeMove = function (space) {
   checkForWin()
   gameTied()
   updateApi(space)
-  console.log('The best moveis', computer('X', 'O'))
 }
 // Check for winner, check for tie
 
@@ -273,7 +272,15 @@ const doubleWin = (player, testBoard, winArray, opponent) => {
     return false
   }
 }
-
+/*
+a. Before this check for double jeapordy for player (Already written)
+1. Loop through all moves See if any force a block
+2. Play that block, check if opponent has double jeapordy
+2a. If they do, return after block false
+3. See if after opponent blocks if player can get double jeapordy, if yes #Winning
+4. If no double jeapordy move, take best available
+5. Write another
+*/
 module.exports = {
   makeMove,
   activePlayer,
