@@ -37,10 +37,9 @@ code to fail.
 
 
 Unsolved problems:
-My Ui sucks and needs to be addressed. The computer took me longer than I thought,
-and ran out of time. I also need to focus on the new game for when you play the computer.
-It works the first game, but then after that it is weird, and the computer won't engage
-at the right time for the first move or two.
+I need to create a better UI. I focused on creating a mvp, after that point, I started to work on a computer opponent. This ended up taking more time than expected, so when I have time this will be addressed.
 
+The computer is a bit buggy. When starting a new game, it would struggle on the second game played after the player logged in, so for now, I have removed computer functionality. 
+The AI also fails to identify the proper move in one situation. Specifically when the computer moves second, and the player plays in a corner. The computer will then play in the center of the board, which is the accurate move. If the human player then plays in the opposite corner, the computer does not identify the proper move, and will play in one of the other two corners, causing a loss.
 Wireframe:
 https://git.generalassemb.ly/juliansirkin/game-project-scope-study/tree/response
