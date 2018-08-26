@@ -1,20 +1,31 @@
 const store = require('../store.js')
 const gameInfo = require('./game-logic.js')
 const clearOldGames = $('#old-games-info').html('')
-
-
-const newGameSuccess = function (data) {
-  $('#old-games-info').html('')
-  gameInfo.newGame()
+const clearGameBoard = function () {
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).empty()
     $('#display').html(`<h2>Current Player: 1 </h2>`)
   }
-  store.game = data.game
 }
+// Starting a new game
+const newGameSuccess = function (data) {
+  // Clears info about old games, or failed change of password
+  $('#old-games-info').html('')
+  // Sets the internal javascript for a new game
+  gameInfo.newGame()
+  // clears any remaining pieces leftover from an old game from UI
+  // Puts player one up top on board
+  clearGameBoard()
+  // Stores response from API
+  store.game = data.game
+  // Shows gameboard, which is hidden on login
+  $('#game-board').removeClass('hidden')
+}
+
 const newGameFail = function () {
   $('#display').html(`<h2>Unable to start a new Game, try again</h2>`)
 }
+// After making a move
 const makeMoveSuccess = function (data) {
   // Store info for using in this function
   const move = store.gameUpdate.game.cell.index
@@ -25,7 +36,7 @@ const makeMoveSuccess = function (data) {
   // Place the piece on the board`
   const placeToken = `<h1 class="piece"> ${token} </h1>`
   $(`#${move}`).html(placeToken)
-  // Clear out display
+  // Clear out display on top of board
   $('#display').html('')
   // Display active Player/Winner/Draw
   if (gameInfo.checkForWin()) {
@@ -47,8 +58,6 @@ const oldGamesFail = function () {
   $('#old-games-info').html('<h4>Unable to get old games, try again!')
 }
 
-
-
 module.exports = {
   newGameSuccess,
   newGameFail,
@@ -56,5 +65,6 @@ module.exports = {
   makeMoveFail,
   oldGamesSuccess,
   oldGamesFail,
-  clearOldGames
+  clearOldGames,
+  clearGameBoard
 }

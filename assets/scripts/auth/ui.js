@@ -1,5 +1,4 @@
 const store = require('../store.js')
-const gameApi = require('../gameplay/gameapi.js')
 const gameUi = require('../gameplay/gameui.js')
 
 const signUpSuccess = function () {
@@ -17,27 +16,38 @@ const signUpFail = function () {
 }
 const logInSuccess = function (data) {
   store.user = data.user
-  $('#login-container, #information, #game-board').toggleClass('hidden')
+  $('#login-container, #information').toggleClass('hidden')
   $('#login-form input').val('')
   $('#login-message').html('')
 }
 const logInFail = function () {
   $('#login-message').html('<h4> Please try again </h4>')
+  $('#login-form input').val('')
 }
 const logOutSuccess = function (data) {
-  $('#old-games-info').html('')
-  $('#login-container, #information, #game-board').toggleClass('hidden')
-  $('#display').html(`<h1>Tic Tac Toe</h1>`)
+  gameUi.clearGameBoard()
+  $('#old-games-info, #display').html('')
+  $('#login-container, #information').toggleClass('hidden')
+  $('#game-board').addClass('hidden')
+  $('#display').html('<h1>Tic Tac Toe</h1>')
 }
 const logOutFail = function () {
   $('display').html('<h1> Try to log out again </h1>')
 }
 const changePasswordSuccess = function () {
-  $('#change-password input, old-games-info').val('')
-  $('#login-container, #information, #game-board').toggleClass('hidden')
+  // gameUi.clearGameBoard()
+  $('#change-password input').val('')
+  //$('#old-games-info').html('')
+  //$('$display').empty()
+  /*$('#login-container, #information').toggleClass('hidden')
+  $('#game-board').addClass('hidden')
+  $('#display').html(`<h1>Tic Tac Toe</h1>`)*/
+  $('#old-games-info').html('<h1>You have succesfully changed Your password</h1>')
 }
 const changePasswordFail = function () {
+  $('#change-password input').val('')
   $('display').html('<h1> Try to change your password again </h1>')
+  $('#old-games-info').html('<h4>Please try to change password again </h4>')
 }
 
 module.exports = {

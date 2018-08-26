@@ -9,7 +9,6 @@ const signUp = function (data) {
   })
 }
 const logIn = function (data) {
-  console.log('login info paassed in', data)
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -17,7 +16,6 @@ const logIn = function (data) {
   })
 }
 const logOut = function () {
-  console.log(store.user.token)
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -27,7 +25,6 @@ const logOut = function () {
   })
 }
 const changePassword = function (data) {
-  console.log('the info getting passed is data', data)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',

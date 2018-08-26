@@ -1,6 +1,5 @@
 'use strict'
 const getFormFields = require('../../../lib/get-form-fields.js')
-const gameLogic = require('../gameplay/game-logic.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
@@ -28,7 +27,6 @@ const onLogOut = function (event) {
 }
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('it is doing things')
   const data = getFormFields(event.target)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
