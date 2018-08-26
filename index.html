@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+    <div id="display" class="text-center">
+      <h1>Tic Tac Toe</h1>
+    </div>
+    <div id="login-container">
+      <form id="login-form" class="col-md-2">
+          <input type="text" name="credentials[email]" placeholder="email">
+          <input type="password" name="credentials[password]" placeholder="password">
+          <button type="submit">login</button>
+      </form>
+      <form name="sign-up" id="sign-up" class="col-md-2">
+          <input type="email" placeholder="email" name="credentials[email]">
+          <input type="password" placeholder="password" name="credentials[password]">
+          <input type="password" placeholder="password confirmation" name="credentials[password_confirmation]">
+          <button type="submit">Create New Account</button>
+      </form>
+      <div id="login-message">
+      </div>
+    </div>
+    <div class="board-container">
+      <table id="game-board" class="hidden">
+        <tr id="row-top" class="row">
+          <td id="0" class="space"></td>
+          <td id="1" class="space"></td>
+          <td id="2" class="space"></td>
+        </tr>
+        <tr id="row-middle" class="row">
+          <td id="3" class="space"></td>
+          <td id="4" class="space"></td>
+          <td id="5" class="space"></td>
+        </tr>
+        <tr id="row-bottom" class="row">
+          <td id="6" class="space"></td>
+          <td id="7" class="space"></td>
+          <td id="8" class="space"></td>
+        </tr>
+      </table>
+    </div>
+    <div id="information" class="hidden text-center">
+      <form id="new-game-human">
+        <fieldset>
+          <button type="submit">play human</button>
+        </fieldset>
+      </form>
+        <form id="change-password" name="change-password">
+            <fieldset>
+              <input type="password" name="passwords[old]" placeholder="Old password">
+              <input type="password" name="passwords[new]" placeholder="Newer Password">
+              <button type="submit">Submit!</button>
+            </fieldset>
+          </form>
+      <form id="old-games" >
+        <fieldset>
+          <button type="submit" name="old-games">Old Game Count</button>
+        </fieldset>
+      </form>
+      <form id="log-out" name="log-out">
+        <fieldset>
+          <button type="submit">Run away</button>
+        </fieldset>
+      </form>
+      <div id="old-games-info">
+      </div>
+    </div>
+    </body>
+</html>
